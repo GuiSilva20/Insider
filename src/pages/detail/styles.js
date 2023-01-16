@@ -34,19 +34,6 @@ export const Banner = styled.Image`
  border-bottom-left-radius: 50px;
 `;
 
-export const ButtonLink = styled.TouchableOpacity`
- background-color: #E70f49;
- width: 63px;
- height: 63px;
- border-radius: 50px;
- position: absolute;
- top: 300px;
- right: 20px;
- justify-content: center;
- align-items: center;
- z-index: 99;
-`;
-
 export const Title = styled.Text`
  color: white;
  font-size: 22px;
@@ -74,9 +61,9 @@ export const Desc = styled.Text`
  color: white;
  align-items: center;
  padding-left: 14px;
+ padding-bottom: 25px;
 
-`
-
+`;
 export const DescTitle = styled.Text`
  font-size: 20px;
  color: white;
@@ -87,9 +74,37 @@ export const DescTitle = styled.Text`
  padding-bottom: 5px;
 
 `
+export const ODesc = styled.Text`
+ font-size: 14px;
+ color: white;
+ font-style: italic;
+ align-items: center;;
+
+`;
+
+export const OTitle = styled.Text`
+ font-size: 16px;
+ color: white;
+ font-weight: bold;
+ align-items: center;
+
+`
 export const ListGenres = styled.FlatList`
  padding-left: 14px;
  margin: 8px 0;
  max-height: 35px;
  min-height: 35px;
+`;
+
+export const DescContainer = styled.View`
+ background-color: rgba(127, 165, 249, 0.35);
+ border-radius: 15px;
+ flex-direction: column;
+ align-items: baseline;
+ padding: 10px;
+ padding-bottom: 5px;
+ box-shadow: 10px 5px 5px black;
+
+
+
 `;

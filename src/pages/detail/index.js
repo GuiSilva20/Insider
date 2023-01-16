@@ -10,7 +10,10 @@ import {
     Rate,
     Desc,
     DescTitle,
-    ListGenres
+    ListGenres,
+    ODesc,
+    DescContainer,
+    OTitle
 } from './styles';
 import {Feather, Ionicons} from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -18,15 +21,12 @@ import api, {key} from '../../services/api';
 import Stars from 'react-native-stars'
 import Genres from '../../components/Genres';
 import { ScrollView, Modal } from 'react-native';
-import ModalLink from '../../components/ModalLink';
 
 function Detail(){
     const navigation = useNavigation();
     const route = useRoute();
-
+    const [originalDesc, setOriginalDesc] = useState(false);
     const [movie, setMovie] = useState({});
-    const [openLink, setOpenLink] = useState(false);
-
 
     useEffect(() => {
         let isActive = true;
@@ -84,10 +84,6 @@ function Detail(){
             source={{uri:`https://image.tmdb.org/t/p/original/${movie.poster_path}`}}
             />
 
-            <ButtonLink onPress={() => setOpenLink(true)}>
-                <Feather name="link" size={24} color="#FFF"/>
-            </ButtonLink>
-
             <Title numberOfLines={2}>{movie.title}</Title>
 
             <ContentArea>
@@ -111,23 +107,25 @@ function Detail(){
              renderItem={({item}) => <Genres data={item}/>}
 
             />
+            <ScrollView>
+            
             <DescTitle>Descrição</DescTitle>
             <Desc>{movie.overview}</Desc>
-             
-
-             <Modal animationType="slide" transparent={true} visible={openLink}>
-               <ModalLink
-                Link={movie?.homepage}
-                title={movie.title}
-                closeModal={() => setOpenLink(false)}
-               />
-
-             </Modal>
-
-
-
+            <DescContainer>
+            <OTitle>Título original </OTitle>
+            <ODesc>{movie.original_title}</ODesc>
+            <OTitle>Popularidade</OTitle>
+            <ODesc>{movie.popularity}</ODesc>
+            <OTitle>Votações</OTitle>
+            <ODesc>{movie.vote_count}</ODesc>
+            <ODesc></ODesc>
+            </DescContainer>
+            </ScrollView>
         </Container>
     )
+
+   
 }
+
 
 export default Detail
