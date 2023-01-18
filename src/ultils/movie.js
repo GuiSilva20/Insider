@@ -1,4 +1,4 @@
-export function getListMovies(size, movies){
+export function getListMovies(size, movies) {
 
     let popularMovies = [];
 
@@ -13,5 +13,5 @@ export function getListMovies(size, movies){
 //Banner
 
 export function randomBanner(movies) {
-    return Math.floor(Math.random()*movies.length)
+    return Math.floor(Math.random() * movies.length)
 }
