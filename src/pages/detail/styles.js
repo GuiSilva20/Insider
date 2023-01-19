@@ -30,8 +30,11 @@ export const HeaderButton = styled.TouchableOpacity`
 export const Banner = styled.Image`
  width: 100%;
  height: 350px;
- border-bottom-right-radius:50px;
- border-bottom-left-radius: 50px;
+ border-bottom-right-radius:15px;
+ border-bottom-left-radius:15px;
+ border-top-right-radius:5px;
+ border-top-left-radius:5px;
+ 
 `;
 
 export const Title = styled.Text`

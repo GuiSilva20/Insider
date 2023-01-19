@@ -8,9 +8,14 @@ import {
     Title,
     Banner,
     BannerButton,
-    SliderMovie
+    SliderMovie,
+    ShadowBox,
+    ShowTitle
 } from './styles'
+import styled from 'styled-components/native';
+import { StyleSheet } from 'react-native';
 import Header from '../../components/header';
+import { useAnimation } from 'react-native-animatable'
 import { SearchBar } from 'react-native-screens';
 import { Feather } from '@expo/vector-icons'
 import SliderItem from '../../components/SliderItem';
@@ -101,22 +106,32 @@ function Home() {
         )
     }
 
+    //function handleSearchButton() {
+    //setSearchButton(true);
+
+    //if (SearchButton(true)) 
+    //return (
+    // )
+    //   }
+
     return (
         <Container>
-            <Header title="React Prime" />
+            <Header />
             <SearchContainer>
                 <Input
                     placeholder="Ex Vingadores"
                     placeholderTextColor="#ddd"
                     value={Input}
                     onChangeText={(text) => setInput(text)}
+                    style={[ShadowBox.shadowProp]}
+
                 />
-                <SearchButton onPress={handleSearchMovie}>
+
+                <SearchButton onPress={handleSearchMovie} >
                     <Feather name="search" size={30} color="#FFF" />
                 </SearchButton>
             </SearchContainer>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <Title> Em cartaz </Title>
                 <BannerButton activeOpacity={0.9} onPress={() => navigateDetailsPage(bannerMovie)} >
                     <Banner
 
@@ -124,15 +139,23 @@ function Home() {
                         resizeMethod="resize"
                     />
                 </BannerButton>
+                <ShowTitle>
+                    <Feather name="play-circle" size={24} color="#FFF" />
+                    <Title> Em cartaz </Title>
+                </ShowTitle>
                 <SliderMovie
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     data={nowMovies}
                     renderItem={({ item }) => <SliderItem data={item} navigatePage={() => navigateDetailsPage(item)} />}
                     keyExtractor={(item) => String(item.id)}
+
                 />
 
-                <Title>Populares</Title>
+                <ShowTitle>
+                    <Feather name="thumbs-up" size={24} color="#FFF" />
+                    <Title> Populares </Title>
+                </ShowTitle>
                 <SliderMovie
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -141,7 +164,10 @@ function Home() {
                     keyExtractor={(item) => String(item.id)}
                 />
 
-                <Title>Mais votados</Title>
+                <ShowTitle>
+                    <Feather name="star" size={24} color="#FFF" />
+                    <Title> Mais votados </Title>
+                </ShowTitle>
                 <SliderMovie
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}

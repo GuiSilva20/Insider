@@ -22,5 +22,12 @@ export const Title = styled.Text`
  margin-left: 14px;
 `;
 
+export const TitleContainer = styled.View`
+height: 70px;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ width: 80%;
+ `;
 
 
